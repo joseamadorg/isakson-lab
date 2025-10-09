@@ -1674,6 +1674,11 @@ section,
   height: 100%;
 }
 
+.teampic {
+    height: 430px;
+    object-fit: cover;
+}
+
 .team .team-member .member-img {
   position: relative;
   overflow: hidden;
