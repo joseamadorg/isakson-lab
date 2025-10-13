@@ -3,5 +3,6 @@
         "activityBar.background": "#53182D",
         "titleBar.activeBackground": "#75213F",
         "titleBar.activeForeground": "#FEFBFC"
-    }
+    },
+    "liveServer.settings.CustomBrowser": "chrome"
 }

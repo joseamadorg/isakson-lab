@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Isakson Lab - Vascular Communication & Microcirculation</title>
+  <meta name="description" content="The Isakson Lab at UVA’s CVRC studies how endothelial and smooth muscle cells communicate within the microcirculation—advancing understanding and treatment of blood pressure regulation, inflammation, and heart failure from molecular mechanisms to human studies.">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+
+</head>
+
+<body class="service-details-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">Isakson Lab</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" >Home<br></a></li>
+          <li><a href="about.html">What We Do</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a class="active" href="publications.html">Publications</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/coolpic_artery.jpg);">
+      <div class="container">
+        <h1>Latest Publications</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Publications</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section">
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+         <div class="col-12">
+          <!-- Where the list will render -->
+              <section id="publications" class="section">
+                <div class="container">
+                  <div id="pubmed-list"></div>
+                </div>
+              </section>
+
+              <script>
+              (async function loadPubMed({
+                term = "isakson b",
+                retmax = 12,
+                apiKey = "" // optional; add your NCBI API key here for higher rate limits
+              } = {}) {
+                const listEl = document.getElementById('pubmed-list');
+                const params = new URLSearchParams({
+                  db: "pubmed",
+                  term,
+                  sort: "date",
+                  retmode: "json",
+                  retmax
+                });
+                if (apiKey) params.set("api_key", apiKey);
+
+                try {
+                  // 1) Search for recent PMIDs
+                  const eSearchURL = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?${params}`;
+                  const ids = await fetch(eSearchURL).then(r => r.json()).then(j => j.esearchresult.idlist || []);
+                  if (!ids.length) {
+                    listEl.innerHTML = "<p>No results found.</p>";
+                    return;
+                  }
+
+                  // 2) Fetch article details
+                  const eSummaryParams = new URLSearchParams({
+                    db: "pubmed",
+                    id: ids.join(","),
+                    retmode: "json"
+                  });
+                  if (apiKey) eSummaryParams.set("api_key", apiKey);
+
+                  const eSummaryURL = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?${eSummaryParams}`;
+                  const data = await fetch(eSummaryURL).then(r => r.json());
+
+                  const uids = data.result?.uids || [];
+                  const items = uids.map(uid => data.result[uid]).filter(Boolean);
+
+                  // 3) Render
+                  listEl.innerHTML = items.map(it => {
+                    const title = it.title || "Untitled";
+                    const journal = it.fulljournalname || it.source || "";
+                    const date = it.pubdate || it.epubdate || "";
+                    const authors = (it.authors || []).map(a => a.name).slice(0, 6).join(", ");
+                    const pmid = it.uid;
+                    const url = `https://pubmed.ncbi.nlm.nih.gov/${pmid}/`;
+
+                    return `
+                      <article class="mb-3 pb-3 border-bottom">
+                        <h5 class="mb-1"><a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a></h5>
+                        <div class="text-muted small mb-1">${journal}${journal && date ? " · " : ""}${date}</div>
+                        ${authors ? `<div class="small">${authors}${(it.authors || []).length > 6 ? " et al." : ""}</div>` : ""}
+                      </article>
+                    `;
+                  }).join("");
+                } catch (err) {
+                  console.error(err);
+                  listEl.innerHTML = "<p>Could not load publications right now.</p>";
+                }
+              })({ term: "isakson b", retmax: 12 /* , apiKey: "YOUR_NCBI_API_KEY" */ });
+              </script>
+
+         </div>
+         <div class="col-12">
+          Find Older Publications in the  <a href="https://pubmed.ncbi.nlm.nih.gov/?term=isakson+b&sort=date">National Library of Medicine</a>
+         </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer light-background">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 col-md-12 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span class="sitename">Isakson Lab</span>
+            </a>
+            <p>Vascular Communication & Microcirculation</p>
+            <div class="social-links d-flex mt-2">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="https://virginia.edu/">University of Virginia</a></li>
+              <li><a href="https://med.virginia.edu/">UVA School of Medicine</a></li>
+              <li><a href="https://www.cvrc.virginia.edu/">Robert M. Berne Cardiovascular Research Center</a></li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=isakson+b&sort=date">Isakson Lab Publications</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Contact Us</h4>
+            <p>Charlottesville, VA 22903</p>
+            <p>409 Lane Rd MR4</p>
+            <p class="mt-1"><strong>Phone:</strong> <span>+1 5555 5555 55</span></p>
+            <p><strong>Email:</strong> <span>XXXXXXXXXXX@isaksonlab.org</span></p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+  <div style="background-color: #232d4b;" class="container-fluid p-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img style="max-height: 60px;" src="assets/img/logo-uva-med.svg" alt="">
+        </div>
+        <div class="col-md-4 offset-md-2">
+          <img style="max-height: 60px;" src="assets/img/CVRC-logo.png" alt=""><span style="color: white;">  Robert M. Berne Cardiovascular Research Center</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
