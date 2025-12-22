@@ -72,45 +72,44 @@
         <div class="row gy-4" id="team-container">
           
               <script>
-               
-                  const API_URL = "https://script.google.com/macros/s/AKfycbxiqFIIEMrCBjhZY_VlA3Xjup2EAEgvA2ON7ohXUxBaQVeX09R336HdlPXI_ho2FlBC/exec";
+                    async function loadTeam() {
+                    const API_URL = "https://script.google.com/macros/s/AKfycbyPk2MsZDOWZwenuwzkjzGya7bRQYEkm59NUE_pisbl-3HbIGSV2LsXQE76rHimQAhx/exec";
+                    const container = document.getElementById('team-container');
 
-                  async function loadTeam() {
-                    const container = document.getElementById('team-container'); 
-                    
                     try {
-                      const response = await fetch(API_URL);
+                      // El secreto para evitar CORS es dejar que el navegador siga la redirección
+                      const response = await fetch(API_URL, {
+                        method: 'GET',
+                        redirect: 'follow'
+                      });
+
                       const members = await response.json();
                       
-                      // Limpiamos el contenedor por si hay contenido estático
-                      container.innerHTML = "";
-
-                      members.forEach(member => {
-                        container.innerHTML += `
-                          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                            <div class="team-member">
-                              <div class="member-img">
-                                <img src="${member.photo}" class="img-fluid teampic" alt="${member.name}">
-                              </div>
-                              <div class="member-info">
-                                <h4>${member.name}</h4>
-                                <span>${member.role}</span>
-                                <p class="mt-2">${member.bio}</p>
-                                <div class="d-flex">
-                                  ${member.twitter ? `<a class="mx-2" href="${member.twitter}" target="_blank"><i class="bi bi-twitter-x"></i></a>` : ''}
-                                  ${member.linkedin ? `<a class="mx-2" href="${member.linkedin}" target="_blank"><i class="bi bi-linkedin"></i></a>` : ''}
-                                </div>
+                      // Generar el HTML
+                      container.innerHTML = members.map(m => `
+                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                          <div class="team-member">
+                            <div class="member-img">
+                              <img src="${m.photo || 'assets/img/default-profile.jpg'}" class="img-fluid teampic" alt="${m.name}">
+                            </div>
+                            <div class="member-info">
+                              <h4>${m.name}</h4>
+                              <span>${m.role}</span>
+                              <p class="mt-2">${m.bio}</p>
+                              <div class="d-flex">
+                                ${m.twitter ? `<a class="mx-2" href="${m.twitter}"><i class="bi bi-twitter-x"></i></a>` : ''}
+                                ${m.linkedin ? `<a class="mx-2" href="${m.linkedin}"><i class="bi bi-linkedin"></i></a>` : ''}
                               </div>
                             </div>
                           </div>
-                        `;
-                      });
+                        </div>
+                      `).join('');
+
                     } catch (error) {
-                      console.error("Error loading team members:", error);
+                      console.error("Error loading members:", error);
                     }
                   }
 
-                  // Ejecutar la función al cargar la página
                   document.addEventListener('DOMContentLoaded', loadTeam);
               </script>
 
