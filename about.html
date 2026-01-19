@@ -46,7 +46,7 @@
         <ul>
           <li><a href="index.html">Home<br></a></li>
           <li><a class="active" href="about.html">What We Do</a></li>
-          <li><a href="team.html">Team</a></li>
+          <li><a href="team_members.html">Team</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -147,283 +147,31 @@
 
     <!-- Team Section -->
     <section id="team" class="team section">
+        <div class="container">
+          <div class="section-title pb-2" data-aos="fade-up">
+            <h2>Get to know the team</h2>
+          </div>
 
-      <div class="container">
-        <!-- Section Title -->
-            <div class="section-title pb-2" data-aos="fade-up"> 
-              <h2>Get to know the team</h2>
-            </div><!-- End Section Title -->
+          <div class="d-flex justify-content-center align-items-center gap-2 mt-3 mb-4">
+            <button class="btn btn-outline-primary" id="teamPrev" aria-label="Previous">
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <span id="teamIndicator" class="small mx-2"></span>
+            <button class="btn btn-outline-primary" id="teamNext" aria-label="Next">
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
 
-        <div class="row gy-4">
-            <div class="d-flex justify-content-center align-items-center gap-2 mt-3">
-              <button class="btn btn-outline-primary " id="teamPrev" aria-label="Previous">
-                <i class="bi bi-chevron-left"></i>
-              </button>
-              <span id="teamIndicator" class="small mx-2"></span>
-              <button class="btn btn-outline-primary " id="teamNext" aria-label="Next">
-                <i class="bi bi-chevron-right"></i>
-              </button>
+          <div class="row gy-4" id="team-container">
+            <div id="team-loader" class="text-center w-100 py-5">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mt-2 text-secondary">Loading team...</p>
             </div>
-
-              <!-- Brant Isakson -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/isakson.jpg" class="img-fluid teampic" alt="Brant Isakson">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Brant Isakson</h4>
-                    <span>PhD | Principal Investigator (PI)</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Angela Best -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="150">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/lab-member.png" class="img-fluid teampic" alt="Angela Best">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Angela Best</h4>
-                    <span>Lab Manager</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Luke Dunaway -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/Dunaway_Headshot.jpg" class="img-fluid teampic" alt="Luke Dunaway">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Luke Dunaway</h4>
-                    <span>PhD | Research Assistant Professor</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Brooke O'Donnell -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="250">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/Brooke ODonnell Headshot.jpg" class="img-fluid teampic" alt="Brooke O'Donnell">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Brooke O'Donnell</h4>
-                    <span>PhD | Post-Doctoral Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Madison Williams -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/Madison Williams headshot.jpg" class="img-fluid teampic" alt="Madison Williams">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Madison Williams</h4>
-                    <span>PhD | Post-Doctoral Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Skylar Loeb -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="350">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/skylar.JPG" class="img-fluid teampic" alt="Skylar Loeb">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Skylar Loeb</h4>
-                    <span>PhD Candidate</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Wyatt Schug -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/Wyatt Schug Headshot 2023.jpg" class="img-fluid teampic" alt="Wyatt Schug">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Wyatt Schug</h4>
-                    <span>PhD Candidate</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Zuzanna Juskiewicz -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="450">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/Zuza.jpg" class="img-fluid teampic" alt="Zuzanna Juskiewicz">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Zuzanna Juskiewicz</h4>
-                    <span>PhD Candidate</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Alicia Carvalho -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="500">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/lab-member.png" class="img-fluid teampic" alt="Alicia Carvalho">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Alicia Carvalho</h4>
-                    <span>Undergraduate Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Nasim Abib -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="550">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/lab-member.png" class="img-fluid teampic" alt="Nasim Abib">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Nasim Abib</h4>
-                    <span>Undergraduate Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Clay Grisius -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="600">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/Clay Headshot.jpg" class="img-fluid teampic" alt="Clay Grisius">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Clay Grisius</h4>
-                    <span>Undergraduate Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Brianna Kalina -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="650">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/lab-member.png" class="img-fluid teampic" alt="Brianna Kalina">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Brianna Kalina</h4>
-                    <span>Undergraduate Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Samantha Bielefeld -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="700">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/lab-member.png" class="img-fluid teampic" alt="Samantha Bielefeld">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Samantha Bielefeld</h4>
-                    <span>Undergraduate Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Taylor Buckley -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="750">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/lab-member.png" class="img-fluid teampic" alt="Taylor Buckley">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Taylor Buckley</h4>
-                    <span>Undergraduate Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
-              <!-- Nirelle Sitchoa -->
-              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="800">
-                <div class="team-member">
-                  <div class="member-img">
-                    <img src="assets/img/team/nirell.jpg" class="img-fluid teampic" alt="Nirelle Sitchoa">
-                    <div class="social">
-                      <a href=""><i class="bi bi-twitter-x"></i></a>
-                      <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4>Nirelle Sitchoa</h4>
-                    <span>Undergraduate Researcher</span>
-                  </div>
-                </div>
-              </div><!-- End Team Member -->
-
+          </div>
         </div>
-
       </div>
-
     </section><!-- /Team Section -->
 
   </main>
@@ -496,96 +244,113 @@
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-    <!-- Team Carrousel -->
-
+<!-- Team Carrusel Script -->
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-  const row = document.querySelector('#team .row.gy-4');
-  if (!row) return;
+    async function loadTeam() {
+        const API_URL = "https://script.google.com/macros/s/AKfycbzCcdrpO9icYcj4UDGfJBGIxK9wUVFygbrbvXqoITklPW_dvMvdThjVTi1lVWhtXZ2H/exec";
+        const container = document.getElementById('team-container');
+        const loader = document.getElementById('team-loader');
+        const prev = document.getElementById('teamPrev');
+        const next = document.getElementById('teamNext');
 
-  const prev = document.getElementById('teamPrev');
-  const next = document.getElementById('teamNext');
-  const indicator = document.getElementById('teamIndicator');
-  if (!prev || !next) return;
+        try {
+            // 1. Iniciar petición
+            const response = await fetch(API_URL, { method: 'GET', redirect: 'follow' });
+            const membersData = await response.json();
 
-  // 🔹 Seleccionamos solo los miembros, no los botones
-  const members = Array.from(row.children).filter(
-    el => !el.contains(prev) && !el.contains(next)
-  );
+            // 2. Quitar el loader
+            if (loader) loader.remove();
 
-  let page = 0;
-  let perPage = getPerPage();
-  let totalPages = calcTotalPages();
+            // 3. Generar el HTML de las cartas
+            container.innerHTML = membersData.map(m => `
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch team-card" data-aos="fade-up">
+                    <div class="team-member w-100">
+                        <div class="member-img">
+                            <img src="${m.photo || 'assets/img/default-profile.jpg'}" class="img-fluid teampic" alt="${m.name}">
+                        </div>
+                        <div class="member-info">
+                            <h4>${m.name}</h4>
+                            <span>${m.role}</span>
+                            <p class="mt-2">${m.bio}</p>
+                            <div class="d-flex">
+                                ${m.twitter ? `<a class="mx-2" href="${m.twitter}"><i class="bi bi-twitter-x"></i></a>` : ''}
+                                ${m.linkedin ? `<a class="mx-2" href="${m.linkedin}"><i class="bi bi-linkedin"></i></a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
 
-  function getPerPage() {
-    if (window.matchMedia('(min-width: 992px)').matches) return 4; // Desktop
-    if (window.matchMedia('(min-width: 768px)').matches) return 2; // Tablet
-    return 1; // Mobile
-  }
+            // 4. Configurar Lógica de Paginación
+            const cards = container.querySelectorAll('.team-card');
+            let currentPage = 0;
 
-  function calcTotalPages() {
-    return Math.max(1, Math.ceil(members.length / perPage));
-  }
+            function getItemsPerPage() {
+                if (window.matchMedia('(min-width: 992px)').matches) return 4;
+                if (window.matchMedia('(min-width: 768px)').matches) return 2;
+                return 1;
+            }
 
-  function clampPage() {
-    if (page > totalPages - 1) page = totalPages - 1;
-    if (page < 0) page = 0;
-  }
+            function updateDisplay() {
+                const perPage = getItemsPerPage();
+                const totalPages = Math.ceil(cards.length / perPage);
 
-  function render() {
-    const start = page * perPage;
-    const end = start + perPage;
+                // Ajuste de rango
+                if (currentPage >= totalPages) currentPage = totalPages - 1;
+                if (currentPage < 0) currentPage = 0;
 
-    // Mostrar solo los miembros de la página actual
-    members.forEach((card, i) => {
-      card.classList.toggle('d-none', !(i >= start && i < end));
-    });
+                const start = currentPage * perPage;
+                const end = start + perPage;
 
-    // Mantener los botones siempre visibles
-    prev.classList.remove('d-none');
-    next.classList.remove('d-none');
+                // Mostrar/Ocultar con d-none (Bootstrap)
+                cards.forEach((card, i) => {
+                    card.classList.toggle('d-none', !(i >= start && i < end));
+                });
 
-    // Desactivar si estamos al inicio o final
-    prev.disabled = page === 0;
-    next.disabled = page === totalPages - 1;
+                // Estado de botones
+                prev.disabled = (currentPage === 0);
+                next.disabled = (currentPage >= totalPages - 1);
 
-    if (indicator) indicator.textContent = ''; // no mostramos números
+                // Refrescar AOS para que las cartas "entren" con animación
+                if (window.AOS) {
+                    AOS.refresh(); 
+                }
+            }
 
-    // Refrescar AOS si está activo
-    if (window.AOS && typeof AOS.refreshHard === 'function') AOS.refreshHard();
-  }
+            // Asignar eventos a los botones
+            prev.onclick = () => {
+                if (currentPage > 0) {
+                    currentPage--;
+                    updateDisplay();
+                }
+            };
 
-  // 🔹 Eventos de los botones
-  prev.addEventListener('click', () => {
-    if (page > 0) page--;
-    render();
-  });
+            next.onclick = () => {
+                const totalPages = Math.ceil(cards.length / getItemsPerPage());
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                    updateDisplay();
+                }
+            };
 
-  next.addEventListener('click', () => {
-    if (page < totalPages - 1) page++;
-    render();
-  });
+            // Escuchar cambios de tamaño de pantalla
+            window.addEventListener('resize', updateDisplay);
 
-  // 🔹 Recalcular al redimensionar
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      const newPerPage = getPerPage();
-      if (newPerPage !== perPage) {
-        perPage = newPerPage;
-        totalPages = calcTotalPages();
-        clampPage();
-        render();
-      }
-    }, 150);
-  });
+            // Ejecución inicial
+            updateDisplay();
 
-  // 🔹 Render inicial
-  render();
-});
+        } catch (error) {
+            console.error("Error:", error);
+            container.innerHTML = `
+                <div class="text-center w-100">
+                    <p class="text-danger">Error al cargar los datos. Por favor, intenta de nuevo.</p>
+                </div>`;
+        }
+    }
+
+        // Iniciar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', loadTeam);
   </script>
-
 
 
 

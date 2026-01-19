@@ -1402,13 +1402,21 @@ section,
   }
 }
 
-@media (min-width: 1200px) {
-  .testimonials .swiper-slide-next {
-    opacity: 1;
-    transform: scale(1.12);
-  }
+@keyframes entradaSuave {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* Aplicar la animación a las cartas que no están ocultas */
+.team-card:not(.d-none) {
+    animation: entradaSuave 0.5s ease-out forwards;
+}
 /*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/

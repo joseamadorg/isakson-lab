@@ -44,7 +44,7 @@
           <ul>
             <li><a href="index.html" class="active">Home<br></a></li>
             <li><a href="about.html">What We Do</a></li>
-            <li><a class="active" href="team.html">Team</a></li>
+            <li><a class="active" href="team_members.html">Team</a></li>
             <li><a href="publications.html">Publications</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -71,47 +71,56 @@
 
         <div class="row gy-4" id="team-container">
           
-              <script>
-                    async function loadTeam() {
-                    const API_URL = "https://script.google.com/macros/s/AKfycbzCcdrpO9icYcj4UDGfJBGIxK9wUVFygbrbvXqoITklPW_dvMvdThjVTi1lVWhtXZ2H/exec";
-                    const container = document.getElementById('team-container');
+        <script>
+                async function loadTeam() {
+                  const API_URL = "https://script.google.com/macros/s/AKfycbzCcdrpO9icYcj4UDGfJBGIxK9wUVFygbrbvXqoITklPW_dvMvdThjVTi1lVWhtXZ2H/exec";
+                  const container = document.getElementById('team-container');
 
-                    try {
-                      // El secreto para evitar CORS es dejar que el navegador siga la redirección
-                      const response = await fetch(API_URL, {
-                        method: 'GET',
-                        redirect: 'follow'
-                      });
+                  // Muestra el spinner inmediatamente antes de iniciar la carga
+                  container.innerHTML = `
+                    <div class="text-center w-100 py-5">
+                      <div class="spinner-border text-primary" role="status"></div>
+                      <p class="mt-2">Loading team...</p>
+                    </div>`;
 
-                      const members = await response.json();
-                      
-                      // Generar el HTML
-                      container.innerHTML = members.map(m => `
-                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                          <div class="team-member">
-                            <div class="member-img">
-                              <img src="${m.photo || 'assets/img/default-profile.jpg'}" class="img-fluid teampic" alt="${m.name}">
-                            </div>
-                            <div class="member-info">
-                              <h4>${m.name}</h4>
-                              <span>${m.role}</span>
-                              <p class="mt-2">${m.bio}</p>
-                              <div class="d-flex">
-                                ${m.twitter ? `<a class="mx-2" href="${m.twitter}"><i class="bi bi-twitter-x"></i></a>` : ''}
-                                ${m.linkedin ? `<a class="mx-2" href="${m.linkedin}"><i class="bi bi-linkedin"></i></a>` : ''}
-                              </div>
+                  try {
+                    // El secreto para evitar CORS es dejar que el navegador siga la redirección
+                    const response = await fetch(API_URL, {
+                      method: 'GET',
+                      redirect: 'follow'
+                    });
+
+                    const members = await response.json();
+
+                    // Generar el HTML (Esto reemplaza automáticamente el spinner)
+                    container.innerHTML = members.map(m => `
+                      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                        <div class="team-member">
+                          <div class="member-img">
+                            <img src="${m.photo || 'assets/img/default-profile.jpg'}" class="img-fluid teampic" alt="${m.name}">
+                          </div>
+                          <div class="member-info">
+                            <h4>${m.name}</h4>
+                            <span>${m.role}</span>
+                            <p class="mt-2">${m.bio}</p>
+                            <div class="d-flex">
+                              ${m.twitter ? `<a class="mx-2" href="${m.twitter}"><i class="bi bi-twitter-x"></i></a>` : ''}
+                              ${m.linkedin ? `<a class="mx-2" href="${m.linkedin}"><i class="bi bi-linkedin"></i></a>` : ''}
                             </div>
                           </div>
                         </div>
-                      `).join('');
+                      </div>
+                    `).join('');
 
-                    } catch (error) {
-                      console.error("Error loading members:", error);
-                    }
+                  } catch (error) {
+                    console.error("Error loading members:", error);
+                    // Mensaje en caso de error para que no se quede el spinner infinito
+                    container.innerHTML = `<p class="text-center">Error loading the team members.</p>`;
                   }
+                }
 
-                  document.addEventListener('DOMContentLoaded', loadTeam);
-              </script>
+                document.addEventListener('DOMContentLoaded', loadTeam);
+        </script>
 
         </div>
 
